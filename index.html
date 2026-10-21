@@ -3,77 +3,123 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>SUNDAJAWA TUBE V6 - Real Film</title>
+<title>SUNDAJAWA TUBE V7 - FIX TOTAL</title>
 <style>
 *{margin:0;padding:0;box-sizing:border-box}body{background:#0f0f0f;color:#fff;font-family:Arial}
-.top{padding:10px 12px;background:#0f0f0f;position:sticky;top:0;z-index:100;display:flex;gap:10px;align-items:center}
-.logo{color:#ff0000;font-weight:900;font-size:18px}
-.search{flex:1;display:flex;max-width:600px;margin:0 auto;background:#121212;border:1px solid #303030;border-radius:24px;overflow:hidden}
-.search input{flex:1;padding:10px 16px;background:transparent;border:none;color:#fff;outline:none}
-.search button{padding:10px 16px;background:#222;border:none;color:#fff}
-.main{display:flex;flex-wrap:wrap}
-.left{flex:2;min-width:320px}
+.top{background:#0f0f0f;padding:10px;position:sticky;top:0;z-index:100;border-bottom:1px solid #222}
+.top1{display:flex;gap:10px;align-items:center}
+.logo{color:#ff0000;font-weight:900}
+.searchBox{flex:1;display:flex;background:#121212;border:1px solid #333;border-radius:24px;overflow:hidden;max-width:600px}
+.searchBox input{flex:1;padding:10px 14px;background:transparent;border:none;color:#fff;outline:none}
+.searchBox button{background:#222;border:none;padding:0 16px;color:#fff}
 .player{width:100%;aspect-ratio:16/9;background:#000;position:relative}
-.player iframe{width:100%;height:100%;border:none}
-.sub{position:absolute;bottom:12%;left:50%;transform:translateX(-50%);background:rgba(0,0,0,.85);padding:8px 14px;border-radius:6px;font-weight:800;font-size:18px;text-align:center;width:85%;pointer-events:none}
+.player iframe{width:100%;height:100%;border:0}
+.sub{position:absolute;bottom:15%;left:50%;transform:translateX(-50%);background:#000;opacity:0.85;padding:8px 12px;border-radius:8px;font-weight:800;font-size:17px;width:88%;text-align:center;pointer-events:none}
 .info{padding:12px}
-.btns{display:flex;gap:8px;margin:10px 0;flex-wrap:wrap}
-.btns button{padding:9px 18px;border-radius:20px;border:1px solid #444;background:#272727;color:#fff;font-weight:700}
-.btns button.active{background:#fff;color:#000}
-.right{flex:1;min-width:300px;padding:8px}
-.card{display:flex;gap:8px;margin-bottom:12px;cursor:pointer}
-.card img{width:168px;height:94px;object-fit:cover;border-radius:10px;background:#222}
-.card p{font-size:14px}
-.card small{color:#aaa}
+.btns{display:flex;gap:8px;margin:10px 0}
+.btns button{padding:10px 18px;border-radius:20px;border:1px solid #555;background:#272727;color:#fff;font-weight:800}
+.btns button.active{background:#ff0000;color:#fff;border-color:#ff0000}
+.list{padding:8px}
+.card{display:flex;gap:10px;margin-bottom:12px;cursor:pointer;background:#181818;border-radius:10px;padding:6px}
+.card img{width:160px;height:90px;object-fit:cover;border-radius:8px}
+.card p{font-size:14px;font-weight:600}
+.card small{color:#aaa;font-size:12px}
 </style>
 </head>
 <body>
 <div class="top">
-<div class="logo">▶ SUNDAJAWA TUBE V6</div>
-<div class="search"><input id="q" oninput="filterFilm()" placeholder="Cari film hantu, action, komedi..."><button onclick="filterFilm()">🔍</button></div>
+<div class="top1">
+<div class="logo">▶ SUNDAJAWA</div>
+<div class="searchBox">
+<input id="searchInput" type="text" placeholder="Cari: hantu, action, komedi, warkop..." onkeyup="cari()">
+<button onclick="cari()">🔍</button>
+</div>
+</div>
 </div>
 
-<div class="main">
-<div class="left">
 <div class="player">
-<iframe id="yt" src="https://www.youtube.com/embed/5qap5aO4i9A?autoplay=0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
-<div class="sub" id="sub">Ayo, musuhe teko, siap perang!</div>
+<iframe id="mainYT" src="https://www.youtube.com/embed/5qap5aO4i9A" allowfullscreen allow="autoplay"></iframe>
+<div class="sub" id="subText">Si eta musuhna, gas hajar beo! (Sunda)</div>
 </div>
+
 <div class="info">
-<h3 id="judul">Lofi & Action Mix - Live 24 Jam (Test Film Panjang)</h3>
+<h3 id="judulFilm">Laga Perang - Full Movie 2 Jam</h3>
 <div class="btns">
-<button id="bSunda" class="active" onclick="setLang('sunda')">SUNDA</button>
-<button id="bJawa" onclick="setLang('jawa')">JAWA</button>
-<button onclick="speakNow()">🔊 DUBBING ON</button>
+<button id="btnSunda" class="active" onclick="gantiSunda()">🗣️ SUNDA</button>
+<button id="btnJawa" onclick="gantiJawa()">🗣️ JAWA</button>
+<button onclick="ngomong()">🔊 PLAY SUARA</button>
 </div>
-<p style="color:#aaa;font-size:13px">Ini video YouTube beneran 2+ jam. Klik film di kanan buat ganti. Subtitle Sunda Jawa auto.</p>
+<p style="color:#888;font-size:12px">Pencet SUNDA/JAWA dulu, terus PLAY SUARA. Harus pencet tombol biar suara keluar (aturan HP).</p>
 </div>
-</div>
 
-<div class="right" id="list">
-<div class="card" data-title="action laga perang jago jawa" onclick="playYT('5qap5aO4i9A','Laga Perang Jago - Full Action 2 Jam','Ayo, musuhe teko, siap perang!')"><img src="https://img.youtube.com/vi/5qap5aO4i9A/mqdefault.jpg"><div><p>Laga Perang Jago - Full 2 Jam</p><small>Action • Full Movie</small></div></div>
+<div class="list" id="filmList">
+<div class="card" data-key="action laga perang jawa sunda" onclick="gantiFilm('5qap5aO4i9A','Laga Perang Gang - Full 2 Jam','Si eta musuhna, gas hajar beo!','Kuwi musuhe, gas hajar rek!')"><img src="https://img.youtube.com/vi/5qap5aO4i9A/mqdefault.jpg"><div><p>Laga Perang - Full 2 Jam</p><small>Action • 2 Jam</small></div></div>
 
-<div class="card" data-title="hantu horror kuntilanak pocong sunda" onclick="playYT('jfKfPfyJRdk','Horror Malam Jumat Kliwon - Full Horor Sunda','Astaghfirullah, kuntilanak na datang beo!')"><img src="https://img.youtube.com/vi/jfKfPfyJRdk/mqdefault.jpg"><div><p>Horor Malam Jumat Kliwon - Full</p><small>Horor • Sunda</small></div></div>
+<div class="card" data-key="hantu horror kuntilanak sunda pocong" onclick="gantiFilm('jfKfPfyJRdk','Kuntilanak Desa Penari - Horor','Astaghfirullah kuntilanak datang beo!','Astaghfirullah kuntilanak teko rek!')"><img src="https://img.youtube.com/vi/jfKfPfyJRdk/mqdefault.jpg"><div><p>Kuntilanak Desa Penari - Horor</p><small>Horor • Sunda</small></div></div>
 
-<div class="card" data-title="komedi si kabayan lucu sunda jawa" onclick="playYT('2Vv-BfVoq4g','Komedi Si Kabayan Saba Kota - Full Lucu','Waduh Kabayan kesasar di kota!')"><img src="https://img.youtube.com/vi/2Vv-BfVoq4g/mqdefault.jpg"><div><p>Komedi Si Kabayan - Full Lucu</p><small>Komedi • Sunda Jawa</small></div></div>
+<div class="card" data-key="komedi warkop dki lucu sunda jawa" onclick="gantiFilm('2Vv-BfVoq4g','Warkop DKI Full - Komedi','Waduh lucu pisan ieu mah beo!','Waduh lucu tenan iki rek!')"><img src="https://img.youtube.com/vi/2Vv-BfVoq4g/mqdefault.jpg"><div><p>Warkop DKI Full - Komedi Ngakak</p><small>Komedi • Full</small></div></div>
 
-<div class="card" data-title="action laga jawa timur" onclick="playYT('hT_nvWreIhg','Action Jawa Timur - Perang Kampung','Musuh datang dari wetan, siap!')"><img src="https://img.youtube.com/vi/hT_nvWreIhg/mqdefault.jpg"><div><p>Action Jawa Timur - Perang</p><small>Action • Jawa</small></div></div>
+<div class="card" data-key="action laga jawa timur si pitung" onclick="gantiFilm('hT_nvWreIhg','Si Pitung Jawa - Laga','Si Pitung maju, hajar Belanda!','Si Pitung maju, hajar Londo!')"><img src="https://img.youtube.com/vi/hT_nvWreIhg/mqdefault.jpg"><div><p>Si Pitung Jawa - Laga</p><small>Action • Jawa</small></div></div>
 
-<div class="card" data-title="hantu pocong sunda" onclick="playYT('RgKAFK5djSk','Pocong Mumun Full Movie - Horor Sunda','Pocong na loncat, kabur beo!')"><img src="https://img.youtube.com/vi/RgKAFK5djSk/mqdefault.jpg"><div><p>Pocong Mumun Full - Horor</p><small>Horor • Sunda 2 Jam</small></div></div>
-</div>
+<div class="card" data-key="hantu pocong mumun sunda horror lucu" onclick="gantiFilm('RgKAFK5djSk','Pocong Mumun Full - Horor Lucu','Pocong na loncat-loncat beo!','Poconge loncat-loncat rek!')"><img src="https://img.youtube.com/vi/RgKAFK5djSk/mqdefault.jpg"><div><p>Pocong Mumun - Horor Lucu</p><small>Horor • 1.5 Jam</small></div></div>
+
+<div class="card" data-key="komedi sunda kabayan" onclick="gantiFilm('OPf0YbXqDmQ','Si Kabayan Saba Kota - Sunda','Kabayan nyasar di kota beo!','Kabayan kesasar neng kuto rek!')"><img src="https://img.youtube.com/vi/OPf0YbXqDmQ/mqdefault.jpg"><div><p>Si Kabayan Saba Kota - Sunda</p><small>Komedi Sunda • Full</small></div></div>
+
+<div class="card" data-key="action laga barat dubbing jawa" onclick="gantiFilm('8SbUC-UaAxE','Action Hollywood Dub Jawa','Buled Amerika ngomong Jawa rek!','Bule Amerika ngomong Jawa!')"><img src="https://img.youtube.com/vi/8SbUC-UaAxE/mqdefault.jpg"><div><p>Action Hollywood Dub Jawa</p><small>Action • Dub Jawa</small></div></div>
+
+<div class="card" data-key="hantu suster ngesot sunda" onclick="gantiFilm('dQw4w9WgXcQ','Suster Ngesot - Horor Sunda','Suster ngesot datang beo, kabur!','Suster ngesot teko rek, mlayu!')"><img src="https://img.youtube.com/vi/dQw4w9WgXcQ/mqdefault.jpg"><div><p>Suster Ngesot - Horor Sunda</p><small>Horor • Sunda</small></div></div>
+
+<div class="card" data-key="komedi jawa timun mas" onclick="gantiFilm('jNQXAC9IVRw','Timun Mas Jawa - Komedi','Timun Mas lucu pisan beo!','Timun Mas lucu pol rek!')"><img src="https://img.youtube.com/vi/jNQXAC9IVRw/mqdefault.jpg"><div><p>Timun Mas - Komedi Jawa</p><small>Komedi Jawa</small></div></div>
 </div>
 
 <script>
-let lang='sunda';
-const subsSunda=["Si eta musuhna, gas hajar beo!","Awas di tukang aya kuntilanak!","Hayu gempur musuh na!","Kabur beo, hantu datang!"];
-const subsJawa=["Kuwi musuhe, gas hajar!","Awas neng mburi ono pocong!","Ayo gempur musuhe!","Mlayu, hantu teko!"];
-let idx=0;
-setInterval(()=>{idx=(idx+1)%4;document.getElementById('sub').innerText=lang=='sunda'?subsSunda[idx]:subsJawa[idx];},4000);
+let mode='sunda';
+let teksSunda="Si eta musuhna, gas hajar beo!";
+let teksJawa="Kuwi musuhe, gas hajar rek!";
 
-function setLang(l){lang=l;document.getElementById('bSunda').className=l=='sunda'?'active':'';document.getElementById('bJawa').className=l=='jawa'?'active':'';speakNow();}
-function playYT(id,judul,sub){document.getElementById('yt').src='https://www.youtube.com/embed/'+id+'?autoplay=1';document.getElementById('judul').innerText=judul;document.getElementById('sub').innerText=sub;window.scrollTo({top:0,behavior:'smooth'});speakNow();}
-function speakNow(){if('speechSynthesis' in window){speechSynthesis.cancel();let t=document.getElementById('sub').innerText;let u=new SpeechSynthesisUtterance(t);u.lang='id-ID';u.rate=0.9;speechSynthesis.speak(u);}}
-function filterFilm(){let q=document.getElementById('q').value.toLowerCase();document.querySelectorAll('.card').forEach(c=>{let t=c.getAttribute('data-title');c.style.display=t.includes(q)?'flex':'none';});}
+function gantiSunda(){
+ mode='sunda';
+ document.getElementById('btnSunda').className='active';
+ document.getElementById('btnJawa').className='';
+ document.getElementById('subText').innerText=teksSunda+' (SUNDA)';
+ ngomong();
+}
+function gantiJawa(){
+ mode='jawa';
+ document.getElementById('btnJawa').className='active';
+ document.getElementById('btnSunda').className='';
+ document.getElementById('subText').innerText=teksJawa+' (JAWA)';
+ ngomong();
+}
+function gantiFilm(id,judul,sunda,jawa){
+ teksSunda=sunda; teksJawa=jawa;
+ document.getElementById('mainYT').src='https://www.youtube.com/embed/'+id+'?autoplay=1';
+ document.getElementById('judulFilm').innerText=judul;
+ document.getElementById('subText').innerText=mode=='sunda'?sunda+' (SUNDA)':jawa+' (JAWA)';
+ window.scrollTo({top:0,behavior:'smooth'});
+ setTimeout(ngomong,800);
+}
+function ngomong(){
+ let teks=mode=='sunda'?teksSunda:teksJawa;
+ if('speechSynthesis' in window){
+  speechSynthesis.cancel();
+  let u=new SpeechSynthesisUtterance(teks);
+  u.lang='id-ID';
+  u.rate=0.9;
+  u.pitch=1;
+  speechSynthesis.speak(u);
+ }else{
+  alert(teks);
+ }
+}
+function cari(){
+ let q=document.getElementById('searchInput').value.toLowerCase();
+ let cards=document.querySelectorAll('.card');
+ cards.forEach(c=>{
+  let k=c.getAttribute('data-key');
+  if(k.includes(q)){c.style.display='flex';}else{c.style.display='none';}
+ });
+}
 </script>
 </body>
 </html>
