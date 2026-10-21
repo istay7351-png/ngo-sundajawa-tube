@@ -3,123 +3,123 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>SUNDAJAWA TUBE V7 - FIX TOTAL</title>
+<title>SUNDAJAWA TUBE PRO V8.1 - SAMPLE UJI COBA</title>
 <style>
-*{margin:0;padding:0;box-sizing:border-box}body{background:#0f0f0f;color:#fff;font-family:Arial}
-.top{background:#0f0f0f;padding:10px;position:sticky;top:0;z-index:100;border-bottom:1px solid #222}
-.top1{display:flex;gap:10px;align-items:center}
-.logo{color:#ff0000;font-weight:900}
-.searchBox{flex:1;display:flex;background:#121212;border:1px solid #333;border-radius:24px;overflow:hidden;max-width:600px}
-.searchBox input{flex:1;padding:10px 14px;background:transparent;border:none;color:#fff;outline:none}
-.searchBox button{background:#222;border:none;padding:0 16px;color:#fff}
+*{margin:0;padding:0;box-sizing:border-box}body{background:#0a0a0a;color:#fff;font-family:Arial}
+.top{position:sticky;top:0;z-index:99;background:#0f0f0f;padding:10px;border-bottom:1px solid #222}
+.row{display:flex;gap:10px;align-items:center}.logo{color:#ff0000;font-weight:900}
+.search{flex:1;display:flex;background:#1a1a1a;border:1px solid #333;border-radius:24px;overflow:hidden}
+.search input{flex:1;background:transparent;border:0;color:#fff;padding:10px 14px;outline:none}
+.search button{background:#222;border:0;color:#fff;padding:0 14px}
 .player{width:100%;aspect-ratio:16/9;background:#000;position:relative}
 .player iframe{width:100%;height:100%;border:0}
-.sub{position:absolute;bottom:15%;left:50%;transform:translateX(-50%);background:#000;opacity:0.85;padding:8px 12px;border-radius:8px;font-weight:800;font-size:17px;width:88%;text-align:center;pointer-events:none}
-.info{padding:12px}
-.btns{display:flex;gap:8px;margin:10px 0}
-.btns button{padding:10px 18px;border-radius:20px;border:1px solid #555;background:#272727;color:#fff;font-weight:800}
-.btns button.active{background:#ff0000;color:#fff;border-color:#ff0000}
-.list{padding:8px}
-.card{display:flex;gap:10px;margin-bottom:12px;cursor:pointer;background:#181818;border-radius:10px;padding:6px}
-.card img{width:160px;height:90px;object-fit:cover;border-radius:8px}
-.card p{font-size:14px;font-weight:600}
-.card small{color:#aaa;font-size:12px}
+.sub{position:absolute;bottom:12%;left:50%;transform:translateX(-50%);background:#000;padding:8px 12px;border-radius:8px;font-weight:800;width:90%;text-align:center}
+.badge{position:absolute;top:10px;left:10px;background:#00ff00;color:#000;font-weight:900;padding:5px 10px;border-radius:20px;font-size:12px}
+.info{padding:12px;background:#121212}
+.btns{display:flex;gap:8px;flex-wrap:wrap;margin:8px 0}
+.btns button{padding:10px 16px;border-radius:20px;border:1px solid #444;background:#222;color:#fff;font-weight:800}
+.btns button.active{background:#ff0000;border-color:#ff0000}
+.sample-box{background:linear-gradient(135deg,#00c853,#009624);padding:14px;border-radius:14px;margin:10px 0;border:2px dashed #fff}
+.paywall{background:linear-gradient(135deg,#ff0000,#7a0000);padding:14px;border-radius:14px;margin:10px 0}
+.paywall .grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:10px}
+.paywall button{padding:12px;border-radius:12px;border:0;font-weight:900}
+.btn-sewa{background:#fff;color:#000}.btn-putus{background:#000;color:#fff;border:1px solid #fff !important}
+.list{padding:8px}.card{display:flex;gap:10px;background:#181818;padding:8px;border-radius:12px;margin-bottom:10px;cursor:pointer;position:relative}
+.card.free{border:2px solid #00ff00}.card.free::after{content:"FREE SAMPLE";position:absolute;top:6px;right:6px;background:#00ff00;color:#000;font-size:9px;padding:3px 6px;border-radius:10px;font-weight:900}
+.card.lock{opacity:0.6}.card.lock::after{content:"🔒 PREMIUM";position:absolute;top:6px;right:6px;background:#ff0000;font-size:9px;padding:4px 8px;border-radius:10px}
+.card img{width:150px;height:84px;border-radius:8px;object-fit:cover}
+.modal{position:fixed;inset:0;background:rgba(0,0,0,.85);display:none;align-items:center;justify-content:center;z-index:999;padding:16px}
+.modal .box{background:#1a1a1a;border-radius:16px;padding:20px;max-width:360px;width:100%;text-align:center}
 </style>
 </head>
 <body>
 <div class="top">
-<div class="top1">
-<div class="logo">▶ SUNDAJAWA</div>
-<div class="searchBox">
-<input id="searchInput" type="text" placeholder="Cari: hantu, action, komedi, warkop..." onkeyup="cari()">
-<button onclick="cari()">🔍</button>
-</div>
+<div class="row">
+<div class="logo">▶ SJ TUBE PRO</div>
+<div class="search"><input id="cari" placeholder="Cari hantu, action, warkop..." oninput="filterCari()"><button onclick="filterCari()">🔍</button></div>
 </div>
 </div>
 
 <div class="player">
-<iframe id="mainYT" src="https://www.youtube.com/embed/5qap5aO4i9A" allowfullscreen allow="autoplay"></iframe>
-<div class="sub" id="subText">Si eta musuhna, gas hajar beo! (Sunda)</div>
+<div class="badge" id="badge">🎁 SAMPLE GRATIS - UJI COBA</div>
+<iframe id="yt" src="https://www.youtube.com/embed/jfKfPfyJRdk?rel=0" allowfullscreen></iframe>
+<div class="sub" id="sub">FREE SAMPLE: Kuntilanak datang beo! - Coba suara Sunda Jawa</div>
 </div>
 
 <div class="info">
-<h3 id="judulFilm">Laga Perang - Full Movie 2 Jam</h3>
+<h3 id="judul">🎁 VIDEO UJI COBA GRATIS - Kuntilanak Sunda</h3>
+<p style="color:#00ff00;font-size:12px">✓ Gratis 100% buat uji coba - Tidak perlu bayar!</p>
 <div class="btns">
-<button id="btnSunda" class="active" onclick="gantiSunda()">🗣️ SUNDA</button>
-<button id="btnJawa" onclick="gantiJawa()">🗣️ JAWA</button>
-<button onclick="ngomong()">🔊 PLAY SUARA</button>
+<button id="bSunda" class="active" onclick="setBahasa('sunda')">SUNDA BEO</button>
+<button id="bJawa" onclick="setBahasa('jawa')">JAWA REK</button>
+<button onclick="playSuara()">🔊 TEST SUARA</button>
+<button onclick="playSample()" style="background:#00ff00;color:#000">▶️ PUTAR SAMPLE</button>
 </div>
-<p style="color:#888;font-size:12px">Pencet SUNDA/JAWA dulu, terus PLAY SUARA. Harus pencet tombol biar suara keluar (aturan HP).</p>
+
+<div class="sample-box">
+<h3>🎬 MAU COBA DULU SEBELUM BELI?</h3>
+<p style="font-size:13px;margin:6px 0">Nonton video di atas gratis! Kalau suara Sunda/Jawa nya mantap, baru beli premium!</p>
+<button onclick="playSample()" style="background:#fff;color:#000;padding:10px 16px;border-radius:20px;border:0;font-weight:900;width:100%;margin-top:6px">▶️ PUTAR VIDEO UJI COBA GRATIS</button>
 </div>
 
-<div class="list" id="filmList">
-<div class="card" data-key="action laga perang jawa sunda" onclick="gantiFilm('5qap5aO4i9A','Laga Perang Gang - Full 2 Jam','Si eta musuhna, gas hajar beo!','Kuwi musuhe, gas hajar rek!')"><img src="https://img.youtube.com/vi/5qap5aO4i9A/mqdefault.jpg"><div><p>Laga Perang - Full 2 Jam</p><small>Action • 2 Jam</small></div></div>
-
-<div class="card" data-key="hantu horror kuntilanak sunda pocong" onclick="gantiFilm('jfKfPfyJRdk','Kuntilanak Desa Penari - Horor','Astaghfirullah kuntilanak datang beo!','Astaghfirullah kuntilanak teko rek!')"><img src="https://img.youtube.com/vi/jfKfPfyJRdk/mqdefault.jpg"><div><p>Kuntilanak Desa Penari - Horor</p><small>Horor • Sunda</small></div></div>
-
-<div class="card" data-key="komedi warkop dki lucu sunda jawa" onclick="gantiFilm('2Vv-BfVoq4g','Warkop DKI Full - Komedi','Waduh lucu pisan ieu mah beo!','Waduh lucu tenan iki rek!')"><img src="https://img.youtube.com/vi/2Vv-BfVoq4g/mqdefault.jpg"><div><p>Warkop DKI Full - Komedi Ngakak</p><small>Komedi • Full</small></div></div>
-
-<div class="card" data-key="action laga jawa timur si pitung" onclick="gantiFilm('hT_nvWreIhg','Si Pitung Jawa - Laga','Si Pitung maju, hajar Belanda!','Si Pitung maju, hajar Londo!')"><img src="https://img.youtube.com/vi/hT_nvWreIhg/mqdefault.jpg"><div><p>Si Pitung Jawa - Laga</p><small>Action • Jawa</small></div></div>
-
-<div class="card" data-key="hantu pocong mumun sunda horror lucu" onclick="gantiFilm('RgKAFK5djSk','Pocong Mumun Full - Horor Lucu','Pocong na loncat-loncat beo!','Poconge loncat-loncat rek!')"><img src="https://img.youtube.com/vi/RgKAFK5djSk/mqdefault.jpg"><div><p>Pocong Mumun - Horor Lucu</p><small>Horor • 1.5 Jam</small></div></div>
-
-<div class="card" data-key="komedi sunda kabayan" onclick="gantiFilm('OPf0YbXqDmQ','Si Kabayan Saba Kota - Sunda','Kabayan nyasar di kota beo!','Kabayan kesasar neng kuto rek!')"><img src="https://img.youtube.com/vi/OPf0YbXqDmQ/mqdefault.jpg"><div><p>Si Kabayan Saba Kota - Sunda</p><small>Komedi Sunda • Full</small></div></div>
-
-<div class="card" data-key="action laga barat dubbing jawa" onclick="gantiFilm('8SbUC-UaAxE','Action Hollywood Dub Jawa','Buled Amerika ngomong Jawa rek!','Bule Amerika ngomong Jawa!')"><img src="https://img.youtube.com/vi/8SbUC-UaAxE/mqdefault.jpg"><div><p>Action Hollywood Dub Jawa</p><small>Action • Dub Jawa</small></div></div>
-
-<div class="card" data-key="hantu suster ngesot sunda" onclick="gantiFilm('dQw4w9WgXcQ','Suster Ngesot - Horor Sunda','Suster ngesot datang beo, kabur!','Suster ngesot teko rek, mlayu!')"><img src="https://img.youtube.com/vi/dQw4w9WgXcQ/mqdefault.jpg"><div><p>Suster Ngesot - Horor Sunda</p><small>Horor • Sunda</small></div></div>
-
-<div class="card" data-key="komedi jawa timun mas" onclick="gantiFilm('jNQXAC9IVRw','Timun Mas Jawa - Komedi','Timun Mas lucu pisan beo!','Timun Mas lucu pol rek!')"><img src="https://img.youtube.com/vi/jNQXAC9IVRw/mqdefault.jpg"><div><p>Timun Mas - Komedi Jawa</p><small>Komedi Jawa</small></div></div>
+<div id="paywall" class="paywall">
+<h3>🔥 MAU NONTON SEMUA 30 FILM?</h3>
+<p style="font-size:12px">Sample di atas gratis. Mau full? Pilih paket:</p>
+<div class="grid">
+<button class="btn-sewa" onclick="beli('SEWA 1 HARI 15K')">SEWA 1 HARI<br>15K</button>
+<button class="btn-sewa" onclick="beli('SEWA MINGGU 35K')">SEWA 7 HARI<br>35K</button>
+<button class="btn-putus" onclick="beli('BELI PUTUS 149K')" style="grid-column:span 2">💎 BELI PUTUS 149K - LIFETIME</button>
 </div>
+</div>
+</div>
+
+<div class="list" id="listFilm"></div>
+
+<div class="modal" id="modal"><div class="box"><h3 id="mJudul"></h3><p id="mText" style="margin:10px 0;color:#aaa;font-size:13px"></p><a id="waLink" href="#" target="_blank" style="display:block;background:#25D366;color:#fff;padding:14px;border-radius:12px;text-decoration:none;font-weight:900">CHAT WA BELI</a><button onclick="document.getElementById('modal').style.display='none'" style="margin-top:10px;background:transparent;border:0;color:#aaa">Tutup</button></div></div>
 
 <script>
-let mode='sunda';
-let teksSunda="Si eta musuhna, gas hajar beo!";
-let teksJawa="Kuwi musuhe, gas hajar rek!";
+let bahasa='sunda', isPremium=localStorage.getItem('sj_premium')=='yes';
+let curS="Kuntilanak beureum datang beo, kabur!", curJ="Kuntilanak abang teko rek, mlayu!";
 
-function gantiSunda(){
- mode='sunda';
- document.getElementById('btnSunda').className='active';
- document.getElementById('btnJawa').className='';
- document.getElementById('subText').innerText=teksSunda+' (SUNDA)';
- ngomong();
+const films=[
+{id:"jfKfPfyJRdk",t:"[FREE SAMPLE] Kuntilanak - Uji Coba Gratis",k:"hantu horror kuntilanak sunda free sample",s:"Kuntilanak beureum datang beo, kabur! Gratis!",j:"Kuntilanak abang teko rek, mlayu! Gratis!",free:true},
+{id:"5qap5aO4i9A",t:"Laga Perang Gang - Full 2 Jam",k:"action laga perang sunda",s:"Si eta musuhna, gas hajar beo!",j:"Kuwi musuhe, gas hajar rek!"},
+{id:"2Vv-BfVoq4g",t:"Warkop DKI Komedi Full",k:"komedi warkop lucu",s:"Warkop ngalawak pisan beo!",j:"Warkop ngelawak pol rek!"},
+{id:"hT_nvWreIhg",t:"Si Pitung Jagoan - Action Jawa",k:"action laga jawa pitung",s:"Si Pitung hajar Belanda beo!",j:"Si Pitung hajar Londo rek!"},
+{id:"RgKAFK5djSk",t:"Pocong Mumun - Horor Komedi",k:"hantu pocong horror komedi",s:"Pocong loncat-loncat beo!",j:"Pocong loncat-loncat rek!"},
+{id:"OPf0YbXqDmQ",t:"Kabayan Saba Kota - Sunda",k:"komedi sunda kabayan",s:"Kabayan nyasar di kota beo!",j:"Kabayan kesasar neng kuto rek!"},
+{id:"dQw4w9WgXcQ",t:"Suster Ngesot - Horor",k:"hantu horror suster sunda",s:"Suster ngesot datang beo!",j:"Suster ngesot teko rek!"},
+{id:"9bZkp7q19f0",t:"Perang Kampung - Action",k:"action laga kampung",s:"Perang kampung mulai beo!",j:"Perang kampung mulai rek!"},
+{id:"kJQP7kiw5Fk",t:"Tanah Jawa - Horor",k:"hantu horror jawa tanah",s:"Tanah Jawa angker beo!",j:"Tanah Jowo angker rek!"},
+{id:"jNQXAC9IVRw",t:"Timun Mas - Legenda Jawa",k:"komedi legenda jawa",s:"Timun Mas geulis beo!",j:"Timun Mas ayu rek!"}
+];
+
+function render(list){const el=document.getElementById('listFilm');el.innerHTML='';list.forEach((f,i)=>{let isFree=f.free;let lock=!isPremium && !isFree;el.innerHTML+=`<div class="card ${isFree?'free':''} ${lock?'lock':''}" data-k="${f.k}" onclick="playFilm('${f.id}','${f.t}','${f.s}','${f.j}',${isFree})"><img src="https://img.youtube.com/vi/${f.id}/mqdefault.jpg"><div><p>${f.t}</p><small>${f.k} • ${isFree?'FREE SAMPLE':'Premium'}</small></div></div>`});}
+render(films);
+if(isPremium) document.getElementById('paywall').style.display='none';
+
+function playSample(){
+curS=films[0].s;curJ=films[0].j;
+document.getElementById('yt').src='https://www.youtube.com/embed/'+films[0].id+'?autoplay=1';
+document.getElementById('judul').innerText=films[0].t;
+document.getElementById('badge').innerText='🎁 SAMPLE GRATIS AKTIF';
+document.getElementById('sub').innerText=(bahasa=='sunda'?curS:curJ)+' [SAMPLE FREE]';
+setTimeout(playSuara,800);
 }
-function gantiJawa(){
- mode='jawa';
- document.getElementById('btnJawa').className='active';
- document.getElementById('btnSunda').className='';
- document.getElementById('subText').innerText=teksJawa+' (JAWA)';
- ngomong();
+function playFilm(id,judul,s,j,isFree){
+if(!isPremium && !isFree){beli('AKSES PREMIUM - '+judul);return;}
+curS=s;curJ=j;
+document.getElementById('yt').src='https://www.youtube.com/embed/'+id+'?autoplay=1';
+document.getElementById('judul').innerText=judul;
+document.getElementById('badge').innerText=isFree?'🎁 SAMPLE GRATIS':'🔒 PREMIUM';
+document.getElementById('sub').innerText=(bahasa=='sunda'?s:j);
+window.scrollTo({top:0,behavior:'smooth'});
+setTimeout(playSuara,700);
 }
-function gantiFilm(id,judul,sunda,jawa){
- teksSunda=sunda; teksJawa=jawa;
- document.getElementById('mainYT').src='https://www.youtube.com/embed/'+id+'?autoplay=1';
- document.getElementById('judulFilm').innerText=judul;
- document.getElementById('subText').innerText=mode=='sunda'?sunda+' (SUNDA)':jawa+' (JAWA)';
- window.scrollTo({top:0,behavior:'smooth'});
- setTimeout(ngomong,800);
-}
-function ngomong(){
- let teks=mode=='sunda'?teksSunda:teksJawa;
- if('speechSynthesis' in window){
-  speechSynthesis.cancel();
-  let u=new SpeechSynthesisUtterance(teks);
-  u.lang='id-ID';
-  u.rate=0.9;
-  u.pitch=1;
-  speechSynthesis.speak(u);
- }else{
-  alert(teks);
- }
-}
-function cari(){
- let q=document.getElementById('searchInput').value.toLowerCase();
- let cards=document.querySelectorAll('.card');
- cards.forEach(c=>{
-  let k=c.getAttribute('data-key');
-  if(k.includes(q)){c.style.display='flex';}else{c.style.display='none';}
- });
-}
+function setBahasa(b){bahasa=b;document.getElementById('bSunda').className=b=='sunda'?'active':'';document.getElementById('bJawa').className=b=='jawa'?'active':'';document.getElementById('sub').innerText=(b=='sunda'?curS:curJ)+' ['+b.toUpperCase()+']';playSuara();}
+function playSuara(){let t=bahasa=='sunda'?curS:curJ;if('speechSynthesis' in window){speechSynthesis.cancel();let u=new SpeechSynthesisUtterance(t);u.lang='id-ID';u.rate=0.9;speechSynthesis.speak(u);} }
+function filterCari(){let q=document.getElementById('cari').value.toLowerCase();let f=films.filter(x=>x.k.includes(q)||x.t.toLowerCase().includes(q));render(f);}
+function beli(paket){let wa="6281234567890";let text=encodeURIComponent("Halo beo, mau "+paket+" SUNDAJAWA TUBE PRO. Kirim sample dulu ya!");document.getElementById('mJudul').innerText=paket;document.getElementById('mText').innerText="Sample gratis di atas udah bisa dicoba. Klik WA buat beli full access. Ganti nomor WA 6281234567890 di kode jadi nomor lu!";document.getElementById('waLink').href="https://wa.me/"+wa+"?text="+text;document.getElementById('modal').style.display='flex';}
 </script>
 </body>
 </html>
